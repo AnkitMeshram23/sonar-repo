@@ -20,7 +20,7 @@ pipeline {
         stage('Sonar Analysis') {
 environment {
 SCANNER_HOME = tool 'Anksonar'
-PROJECT_NAME = "New test"
+PROJECT_NAME = "test"
 }
 steps {
 withSonarQubeEnv('Anksonar') {
