@@ -45,7 +45,7 @@ sh '''$SCANNER_HOME/bin/sonar-scanner \
         }
 	stage('Deploy') {
             steps {
-		    sh 'cp /root/.jenkins/workspace/Java-pipeline/target/*.war /opt/apache-tomcat-9.0.58/webapps/'
+		    sh 'cp /root/.jenkins/workspace/Sonar-test/target/*.war /opt/tomcat/webapps/'
             }
         }
   }
