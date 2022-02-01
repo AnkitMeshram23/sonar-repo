@@ -23,7 +23,7 @@ SCANNER_HOME = tool 'Anksonar'
 PROJECT_NAME = "test"
 }
 steps {
-withSonarQubeEnv('mysonarserver') {
+withSonarQubeEnv('Anksonar') {
 sh '''$SCANNER_HOME/bin/sonar-scanner \
 -Dsonar.java.binaries=build/classes/java/ \
 -Dsonar.projectKey=$PROJECT_NAME \
