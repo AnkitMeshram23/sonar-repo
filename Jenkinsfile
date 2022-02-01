@@ -17,14 +17,20 @@ pipeline {
             }
         }		    
 	    
-        stage('Sonar Testing') {
-            steps {
-
-                withSonarQubeEnv('sonar1') {
-                    sh "mvn sonar:sonar"
-                }
-            }
-	}   
+        stage('Sonar Analysis') {
+environment {
+SCANNER_HOME = tool 'Anksonar'
+PROJECT_NAME = "test"
+}
+steps {
+withSonarQubeEnv('sonar1') {
+sh '''$SCANNER_HOME/bin/sonar-scanner \
+-Dsonar.java.binaries=build/classes/java/ \
+-Dsonar.projectKey=$PROJECT_NAME \
+-Dsonar.sources=.'''
+}
+}
+}
          stage('Quality Gate') {
            steps {
               timeout(time: 1, unit: 'MINUTES') {
